@@ -2,6 +2,25 @@ package ARRAY;
 
 public class RightShift {
 
+    public static void shiftByK(int[] arr,int k){
+        int n  = arr.length;
+        int[] result = new int[n];
+
+
+        for(int i = 0; i<n; i++){
+            int temp = arr[i];
+            int newIndex =(i+k)%n;
+            result[newIndex] = temp;
+        }
+
+        for(int s : result){
+            System.out.print(s + " ");
+        }
+
+
+    }
+
+
     static void rightShiftByOne(int[] arr){
 
        // int i = arr.length-1 , j =arr.length-2;
@@ -17,16 +36,17 @@ public class RightShift {
 
         arr[0] = last;
 
-
     }
+
+
     static void main() {
 
-        int[] arr = {2,3,4,5,6,7,8};
 
-       rightShiftByOne(arr);
-        for(int s : arr){
-            System.out.print(s + " ");
-        }
+
+        int[] arr = {2,3,4,5};
+         int k = 3;
+//       rightShiftByOne(arr);
+        shiftByK(arr,k);
 
     }
 }
