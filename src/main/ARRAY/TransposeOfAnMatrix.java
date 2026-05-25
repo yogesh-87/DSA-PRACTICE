@@ -11,16 +11,16 @@ public class TransposeOfAnMatrix {
         int[][] result = new int[m][n];
         int col = 0, row= 0;
 //
-        while (row < m){  // m = 3
-
-            if(col < n){   // n = 2
-            result[row][col] = nums[col][row];
-            col++;
-            }else{
-                 col = 0;
-               row++;
-            }
-        }
+//        while (row < m){  // m = 3
+//
+//            if(col < n){   // n = 2
+//            result[row][col] = nums[col][row];
+//            col++;
+//            }else{
+//                 col = 0;
+//               row++;
+//            }
+//        }
 
 // it takes O(n^2) time complexity
 //        for( row = 0; row < m; row++){
