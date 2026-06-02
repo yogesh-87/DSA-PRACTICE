@@ -7,35 +7,15 @@ public class TrappedWater {
         int[] rightMax = new int[n];
 
         // find left side max value
-      int maxSum = arr[0];
-      leftMax[0] = 0;
+      leftMax[0] = arr[0];
         for(int i = 1; i<arr.length; i++){
-            int currSum = 0;
-            currSum = arr[i];
-            if(maxSum < currSum ){
-                maxSum = currSum;
-                leftMax[i] = 0;
-            }else{
-                leftMax[i] = maxSum;
-            }
-
+            leftMax[i] = Math.max(leftMax[i-1] , arr[i]);
         }
 
 
-        // right side max sum
-        int maxsum = arr[n-1];
-        rightMax[n-1] = 0;
+        rightMax[n-1] = arr[n-1];
         for(int  i = n-2; i>= 0; i--){
-            int currSum = 0;
-            currSum = arr[i];
-
-            if(maxsum < currSum ){
-                maxsum = currSum;
-                rightMax[i] = 0;
-            }else{
-                rightMax[i] = maxsum;
-            }
-
+            rightMax[i] = Math.max(rightMax[i+1] , arr[i]);
         }
 
 
@@ -45,19 +25,19 @@ public class TrappedWater {
 
         System.out.println("Trapped water At every building : ");
         for(int i = 0; i<arr.length; i++){
-            if(leftMax[i] == 0 || rightMax[i] == 0){
-                trapped_Water[i] = 0;
-            }else if(rightMax[i] < leftMax[i] ){
-                trapped_Water[i] = rightMax[i] - arr[i];
-             }else{
-                trapped_Water[i] = leftMax[i] - arr[i];
-            }
+            int min = Math.min(leftMax[i] , rightMax[i]);
+            trapped_Water[i] = min - arr[i];
         }
 
+
+
+        int total_trapped_water = 0;
         for(int i = 0; i<arr.length; i++){
+            total_trapped_water += trapped_Water[i];
             System.out.print(trapped_Water[i] + " ");
         }
-
+        System.out.println();
+        System.out.print("Total TRAPPED WATER :  "+ total_trapped_water);
     }
     static void main() {
 
